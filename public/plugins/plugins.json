@@ -1,0 +1,27 @@
+{
+  "active": [
+    {
+      "name": "dream-chat",
+      "version": "0.1.0",
+      "author": "SrPatinhas",
+      "config": {
+        "icon": "fa fa-comments-o",
+        "color": "#64b164",
+        "title": "Chat",
+        "main": "app/index.js"
+      }
+    },
+    {
+      "name": "dream-movies",
+      "version": "0.1.0",
+      "author": "SrPatinhas",
+      "config": {
+        "icon": "fa fa-film",
+        "color": "#64b164",
+        "title": "Movies",
+        "main": "app/index.js"
+      }
+    }
+  ],
+  "disabled": []
+}
