@@ -1,0 +1,367 @@
+/* 
+	HTML implementation of a Hip Chat redesign based on Jan DvoÃ…â„¢ÃƒÂ¡k Dribbble shot.
+	https://dribbble.com/shots/1529065-HipChat-Redesign
+*/
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+html{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+ol,
+ul,
+li {
+	list-style: none;
+}
+blockquote,
+q {
+	quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+body {
+	background: transparent;
+	font: 14px/20px "Lato", Arial, sans-serif;
+	color: #333f4d;
+	line-height: 1;
+}
+body,
+div#root {
+	width: 100%;
+	height: 100%;
+}
+b {
+	font-weight: bold;
+}
+.window-wrapper {
+	background: #fff;
+	width: 100%;
+	margin: 0;
+	border-radius: 6px;
+	overflow: hidden;
+	height: 100%;
+	position: relative;
+}
+.window-title {
+	padding: 13px;
+	position: relative;
+	-webkit-user-select: none;
+	-webkit-app-region: drag;
+}
+.window-title > div{
+	-webkit-app-region: no-drag;
+}
+
+/**
+ * OS based topbar
+ * 
+ * OSX and Linux
+ */
+	.window-title > .title {
+		-webkit-user-select: none;
+		-webkit-app-region: drag;
+		overflow: hidden;
+		text-align: center;
+		font-weight: bold;
+	}
+	.window-title > .expand {
+		position: absolute;
+		right: 14px;
+		top: 12px;
+	}
+	.expand > i {
+		color: #cfd6e0;
+		font-size: 18px;
+		cursor: pointer;
+	}
+	.dots {
+		float: left;
+		width: 50px;
+	}
+	.dots > i {
+		margin-right: 2px;
+		cursor: pointer;
+	}
+	.dots > i:hover{
+		cursor: pointer;	
+	}
+	.dots > i.close {
+		color: #f57e7d;
+	}
+	.dots > i.close:hover {
+		color: rgb(191, 73, 67);
+	}
+	.dots > i.minimize {
+		color: #ffc881;
+	}
+	.dots > i.minimize:hover {
+		color: rgb(191, 145, 35);
+	}
+	.dots > i.maximize {
+		color: #82cf85;
+	}
+	.dots > i.maximize:hover {
+		color: rgb(31, 154, 49);
+	}
+
+/**
+ * OS based topbar
+ * 
+ * Windows
+ */
+	.win32 .window-title > .title {
+		text-align: left;
+	}
+	.win32 .window-title > .expand {
+		position: absolute;
+		right: 84px;
+		top: 12px;
+	}
+	.win32 .dots {
+		float: right;
+		width: 60px;
+		height: 22px;
+	}
+	.win32 .dots > i {
+		margin: 0;
+		cursor: pointer;
+		float: right;
+		width: 20px;
+		height: 100%;
+		text-align: center;
+		padding-top: 4px;
+	}
+	.win32 .dots > i:hover{
+		cursor: pointer;	
+	}
+	.win32 .dots > i.close {
+		color: #000;
+	}
+	.win32 .dots > i.close:hover {
+		color: rgb(191, 73, 67);
+	}
+	.win32 .dots > i.minimize {
+		color: #000;
+		float: left;
+	}
+	.win32 .dots > i.minimize:hover {
+		color: rgb(191, 145, 35);
+	}
+	.win32 .dots > i.maximize {
+		color: #000;
+		font-size: 12px;
+		padding-top: 6px;
+	}
+	.win32 .dots > i.maximize:hover {
+		color: rgb(31, 154, 49);
+	}
+	.win32 .expand > i {
+		color: #868686;
+	}
+/**
+ * App Full content 
+ * Menu + package
+ */
+.window-area {
+	position: absolute;
+	top: 40px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding-left: 80px;
+}
+/**
+ * Menu bar
+ */
+.menu-list {
+	width: 80px;
+	background: #282a2c;
+	float: left;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+}
+.menu-list ul li.active a {
+	background: #1d1e20;
+	color: #efeeee;
+}
+.menu-list ul li a {
+	padding: 12px;
+	color: #bfbfbf;
+	text-decoration: none;
+	display: block;
+	position: relative;
+	border-bottom: 1px solid #343535;
+	transition: all 0.2s linear;
+	height: 100%;
+	text-align: center;
+}
+.menu-list ul li a i {
+	font-size: 28px;
+	display: block;
+}
+.menu-list ul li a span {
+	display: block;
+	margin-top: 4px;
+	font-size: 10px;
+	color: #888888;
+}
+.menu-list ul li a:hover {
+	background: #3a3a3a;
+}
+.menu-list .online {
+	color: #82cf85;
+}
+.menu-list .idle {
+	color: #ffac69;
+}
+.menu-list .offline {
+	color: #f57e7d;
+}
+
+/**
+ * Settings Icon
+ */
+.my-account {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 60px;
+	padding: 16px;
+	background: #445166;
+	text-align: center;
+}
+.my-account > .settings {
+	position: relative;
+}
+.my-account > .settings > i {
+	color: #efeeee;
+	font-size: 30px;
+}
+
+/**
+ * Package container
+ */
+.package-container{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}

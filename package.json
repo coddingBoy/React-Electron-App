@@ -1,0 +1,26 @@
+{
+  "name": "react-chat",
+  "version": "0.1.0",
+  "private": true,
+  "author": "SrPatinhas",
+  "license": "MIT",
+  "main": "main.js",
+  "devDependencies": {
+    "react-scripts": "0.7.0"
+  },
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+
+    "axios": "^0.15.2",
+
+    "electron-prebuilt": "^1.4.5",
+    "electron-reload": "^1.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start && electron .",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
