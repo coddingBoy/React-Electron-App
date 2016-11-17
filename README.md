@@ -1,6 +1,6 @@
 idea for core app [dribble](https://dribbble.com/shots/3087079-Side-navigation-menu)
 
-
+App with the same concept [Nylas/N1](https://github.com/nylas/N1)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
